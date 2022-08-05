@@ -19,43 +19,23 @@ DATA = {
     # можете добавить свои рецепты ;)
 }
 
+
 def home(request):
     template_name = 'calculator/home.html'
-    pages = {
-        'Показать рецепт омлета': reverse('omlet'),
-        'Показать рецепт пасты': reverse('pasta'),
-        'Показать рецепт бутерброда': reverse('buter'),
-    }
-
     context = {
-        'pages': pages
+        'data': DATA
     }
     return render(request, template_name, context)
 
-def omlet(request):
+
+def dish(request, dish):
     template_name = 'calculator/index.html'
     servings = int(request.GET.get('servings', 1))
     context = {
-      'recipe': DATA['omlet'],
+      'recipe': DATA[f'{dish}'],
         'servings': servings
     }
     return render(request, template_name, context)
 
-def pasta(request):
-    template_name = 'calculator/index.html'
-    servings = int(request.GET.get('servings', 1))
-    context = {
-      'recipe': DATA['pasta'],
-        'servings': servings
-    }
-    return render(request, template_name, context)
 
-def buter(request):
-    template_name = 'calculator/index.html'
-    servings = int(request.GET.get('servings', 1))
-    context = {
-      'recipe': DATA['buter'],
-        'servings': servings
-    }
-    return render(request, template_name, context)
 

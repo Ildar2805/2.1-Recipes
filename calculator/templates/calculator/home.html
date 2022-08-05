@@ -5,9 +5,9 @@
     <title>Домашняя страница</title>
 </head>
 <body>
-    <h1>Выберите раздел</h1>
-    {% for title, url in pages.items %}
-        <a href="{{ url }}">{{ title }}</a>
+    <h3>Выберите раздел</h3>
+    {% for title, recipe in data.items %}
+        <a href="{% url 'dish' title %}">Рецепт {{ title }}</a>
         <br>
     {% endfor %}
 </body>
