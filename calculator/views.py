@@ -31,8 +31,11 @@ def home(request):
 def dish(request, dish):
     template_name = 'calculator/index.html'
     servings = int(request.GET.get('servings', 1))
+    data = {}
+    for key, value in DATA[f'{dish}'].items():
+        data[key] = value * servings
     context = {
-      'recipe': DATA[f'{dish}'],
+      'recipe': data,
         'servings': servings
     }
     return render(request, template_name, context)
